@@ -1,4 +1,4 @@
-package com.ay.codePow.execute;
+package com.ay.codepow;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
