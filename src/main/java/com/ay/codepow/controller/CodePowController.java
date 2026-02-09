@@ -9,9 +9,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Validated
 public class CodePowController {
-    @GetMapping("/greeting")
-    public ResponseEntity<String> greeting(){
-        return ResponseEntity.ok("hello world");
+    @GetMapping("/training")
+    public ResponseEntity<String> training(){
+        return ResponseEntity.ok("training done");
+    }
+
+    @GetMapping("/eating")
+    public ResponseEntity<String> eating(){
+        return ResponseEntity.ok("eating done");
+    }
+
+    @GetMapping("/resting")
+    public ResponseEntity<String> resting(){
+        return ResponseEntity.ok("resting done");
     }
 }
 
