@@ -34,7 +34,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             # Pull the latest image
-            docker pull your-docker-user/spring-api:latest
+            docker pull ${{ vars.DOCKER_USERNAME }}/codepow:latest
             # Stop and remove existing container if it exists
             docker stop spring-api-container || true
             docker rm spring-api-container || true
