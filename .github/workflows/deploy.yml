@@ -41,5 +41,5 @@ jobs:
             # Run the new container
             docker run -d \
               --name spring-api-container \
-              -p 8080:8080 \
+              -p 8090:8090 \
               ${{ vars.DOCKER_USERNAME }}/codepow:latest
