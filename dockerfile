@@ -7,13 +7,13 @@
 #RUN npm run build
 
 # STAGE 2: Build the Spring Boot Backend
-FROM maven:3.9-eclipse-temurin-17 AS backend-build
-WORKDIR /app/backend
-COPY backend/pom.xml ./
+FROM maven:3.9-eclipse-temurin-17 AS api-build
+WORKDIR /app/api
+COPY api/pom.xml ./
 # Pre-download dependencies to speed up future builds
 RUN mvn dependency:go-offline
 
-COPY backend/src ./src
+COPY api/src ./src
 # Copy the React build into Spring Boot's static resources
 #COPY --from=frontend-build /app/frontend/dist ./src/main/resources/static
 RUN mvn clean package -DskipTests
@@ -22,7 +22,7 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 # Copy only the final JAR from the build stage
-COPY --from=backend-build /app/backend/target/*.jar app.jar
+COPY --from=api-build /app/api/target/*.jar app.jar
 
 EXPOSE 8090
 ENTRYPOINT ["java", "-jar", "pow.jar"]
